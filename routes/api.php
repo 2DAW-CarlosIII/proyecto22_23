@@ -7,6 +7,8 @@ use Psr\Http\Message\ServerRequestInterface;
 use Tqdev\PhpCrudApi\Api;
 use Tqdev\PhpCrudApi\Config\Config;
 
+use App\Http\Controllers\API\CustomerController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,6 +23,8 @@ use Tqdev\PhpCrudApi\Config\Config;
 Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('customers', CustomerController::class);
 
 Route::any('/{any}', function (ServerRequestInterface $request) {
     $config = new Config([
